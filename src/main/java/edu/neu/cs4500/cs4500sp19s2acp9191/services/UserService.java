@@ -12,14 +12,17 @@ import edu.neu.cs4500.cs4500sp19s2acp9191.models.User;
 @RestController
 public class UserService {
   static List<User> users = new ArrayList();
+
   static {
     users.add(new User(123, "alice", "alice", "Alice", "Wonderland"));
     users.add(new User(234, "bob", "bob", "Bob", "Marley"));
   }
+
   @GetMapping("/api/user")
   public List<User> findAllUsers() {
     return users;
   }
+
   @GetMapping("/api/user/{userId}")
   public User findUserById(
           @PathVariable("userId") Integer id) {
@@ -27,6 +30,7 @@ public class UserService {
       if (user.getId() == id) {
         return user;
       }
-      return null;
     }
+    return null;
   }
+}
